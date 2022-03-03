@@ -24,6 +24,8 @@ build:
   artifacts:
     paths:
       - "conqueror.digest"
+  before_script:
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" zoo.smok.co
 
 
 deploy:
@@ -36,3 +38,5 @@ deploy:
     - docker service update --with-registry-auth --image `cat conqueror.digest` conqueror
   dependencies:
     - build
+  before_script:
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" zoo.smok.co
