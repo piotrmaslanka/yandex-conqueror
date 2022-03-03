@@ -2,13 +2,13 @@ import os
 
 import flask
 import flask_json
-import flask_minijson
 import yaml
 from flasgger import Swagger
 from flask_cors import CORS
 from flask_opentracing import FlaskTracing
 from flask_satella_metrics import SatellaMetricsMiddleware
 from satella.instrumentation.metrics import getMetric
+from flask_satella_metrics.prometheus_exporter import PrometheusExporter
 
 from flask_requests_logging import FlaskRequestsLogging
 
@@ -42,3 +42,4 @@ SatellaMetricsMiddleware(app, summary_metric=getMetric('rapid.api.call_time.summ
                          histogram_metric=getMetric('rapid.api.call_time.histogram', 'histogram'),
                          response_codes_metric=getMetric('rapid.api.response_codes', 'counter'))
 
+app.register_blueprint(PrometheusExporter({'service_name': 'my_service'}))
