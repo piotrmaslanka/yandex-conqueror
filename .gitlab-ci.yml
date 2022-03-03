@@ -12,3 +12,27 @@ unittest:
   after_script:
     - docker-compose -p $(cat project_name) down
   coverage: /TOTAL.*\s+(\d+\%)/
+
+
+
+build:
+  only:
+    - main
+  stage: build
+  script:
+    - DOCKERIT_NO_BRANCH=1 docker-it conqueror zoo.smok.co/yandex-conqueror/conqueror . --target runtime
+  artifacts:
+    paths:
+      - "conqueror.digest"
+
+
+deploy:
+  stage: develop
+  only:
+    - main
+  variables:
+    DOCKER_HOST: "192.168.224.201:2375"
+  script:
+    - docker service update --with-registry-auth --image `cat conqueror.digest` conqueror
+  dependencies:
+    - build
