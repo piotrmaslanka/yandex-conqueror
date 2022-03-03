@@ -1,0 +1,86 @@
+info:
+  title: "Stop Putin!"
+  description: >
+    Uniform API
+  contact:
+    responsibleOrganization: "Yandex Conqueror"
+    email: "pmaslanka@smok.co"
+  license:
+    name: "Copyright (c) 2022 Yandex Conqueror project members"
+    url: "https://confluence.dms-serwis.com.pl/display/SE/Regulamin"
+servers:
+  - description: Serwer produkcyjny
+    url: https://yandex.henrietta.com.pl
+schemes:
+  - https
+components:
+  securitySchemes:
+    JWTAuth:
+      type: http
+      scheme: "bearer"
+      bearerFormat: "JWT"
+      description: "For user access"
+    deviceCertificate:
+      type: "apiKey"
+      in: "header"
+      name: "X-SSL-Client-Certificate"
+      description: "For device access the devices attach their certificate to every call"
+  schemas:
+    BadResponse:
+      type: "object"
+      properties:
+        status:
+          type: "string"
+          description: "Human readable message of what went wrong"
+          example: "insufficient privileges"
+      required:
+        - status
+  responses:
+    NotSHCIDevice:
+      description: "This is not a SHCI device (or a bad request)"
+      content:
+        application/json:
+          schema:
+            schema:
+              $ref: '#/components/schemas/BadResponse'
+    InvalidRequest:
+      description: "This request was invalid"
+      content:
+        application/json:
+          schema:
+            schema:
+              $ref: '#/components/schemas/BadResponse'
+    KeyRestricted:
+      description: "This is a restricted key"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadResponse'
+    KeyDoesNotExist:
+      description: "This key is not yet set (is empty)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadResponse'
+    Unauthorized:
+      description: "You have not authorized yourself or your token is invalid"
+      content:
+        application/json:
+          schema:
+            schema:
+              $ref: '#/components/schemas/BadResponse'
+    AccessDenied:
+      description: >
+        You don't have sufficient privileges to execute this operation,
+        or you've logged in with the wrong service,
+        or a device-level access was made to a non-RAPID device.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadResponse'
+    DoesNotExist:
+      description: "The resource that you requested does not exist (device, sensor, event or event note)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadResponse'

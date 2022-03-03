@@ -1,0 +1,9 @@
+[run]
+branch=1
+source=
+    conqueror
+
+[report]
+exclude_lines=
+    pragma: no cover
+show_missing = True

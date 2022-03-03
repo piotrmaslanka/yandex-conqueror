@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+  cassandra:
+    build: services/cassandra
+  run_local:
+    build:
+      context: .
+      target: runtime
+    depends_on:
+      - cassandra
+  unittest:
+    build:
+      context: .
+      target: unittest
+    depends_on:
+      - cassandra
+
