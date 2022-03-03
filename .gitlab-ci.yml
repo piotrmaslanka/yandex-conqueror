@@ -1,0 +1,14 @@
+stages:
+  - test
+  - build
+  - deploy
+
+
+unittest:
+  stage: test
+  script:
+    - echo $(cat /proc/sys/kernel/random/uuid) > project_name
+    - docker-compose -p $(cat project_name) up --exit-code-from=unittest --build unittest
+  after_script:
+    - docker-compose -p $(cat project_name) down
+  coverage: /TOTAL.*\s+(\d+\%)/
