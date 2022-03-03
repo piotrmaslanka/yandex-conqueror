@@ -8,10 +8,13 @@ import typing as tp
 REPL_RE = re.compile(r'\[(.*?)\]')
 
 
-def get_messages() -> tp.List[MessagePiece]:
+def get_messages(part_type: tp.Optional[str] = None) -> tp.List[MessagePiece]:
     with open('/app/resources/messages-short.json', 'r') as f_in:
-        data = json.loads(f_in)
-    return [MessagePiece.from_json(y) for y in data]
+        data = json.load(f_in)
+    if part_type is None:
+        return [MessagePiece.from_json(y) for y in data]
+    else:
+        return [MessagePiece.from_json(y) for y in data if y['type'] == part_type]
 
 
 class MessagePiece:

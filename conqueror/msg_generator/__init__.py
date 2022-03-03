@@ -1,1 +1,1 @@
-from .definitions import MessagePiece
+from .definitions import MessagePiece, get_messages
