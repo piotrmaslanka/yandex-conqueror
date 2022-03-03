@@ -5,7 +5,7 @@ import flask_json
 import yaml
 from flasgger import Swagger
 from flask_cors import CORS
-from flask_opentracing import FlaskTracing
+
 from flask_satella_metrics import SatellaMetricsMiddleware
 from satella.instrumentation.metrics import getMetric
 from flask_satella_metrics.prometheus_exporter import PrometheusExporter
