@@ -37,9 +37,9 @@ def redirect_to_swagger():
     return flask.redirect('/apidocs')
 
 
-SatellaMetricsMiddleware(app, summary_metric=getMetric('rapid.api.call_time.summary', 'summary',
+SatellaMetricsMiddleware(app, summary_metric=getMetric('yandex.api.call_time.summary', 'summary',
                                                        quantiles=[0.5, 0.95, 0.99]),
-                         histogram_metric=getMetric('rapid.api.call_time.histogram', 'histogram'),
-                         response_codes_metric=getMetric('rapid.api.response_codes', 'counter'))
+                         histogram_metric=getMetric('yandex.api.call_time.histogram', 'histogram'),
+                         response_codes_metric=getMetric('yandex.api.response_codes', 'counter'))
 
-app.register_blueprint(PrometheusExporter({'service_name': 'my_service'}))
+app.register_blueprint(PrometheusExporter({'service_name': 'yandex'}))
