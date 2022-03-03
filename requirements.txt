@@ -9,5 +9,5 @@ flask-cors
 flask-json
 flasgger
 pyjwt
-Jinja2<3
+markupsafe==2.0.*
 cassandra-driver

@@ -16,16 +16,16 @@ unittest:
 
 
 build:
+  stage: build
   only:
     - main
-  stage: build
+  before_script:
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" zoo.smok.co
   script:
     - DOCKERIT_NO_BRANCH=1 docker-it conqueror zoo.smok.co/yandex-conqueror/conqueror . --target runtime
   artifacts:
     paths:
       - "conqueror.digest"
-  before_script:
-    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" zoo.smok.co
 
 
 deploy:
@@ -34,9 +34,9 @@ deploy:
     - main
   variables:
     DOCKER_HOST: "192.168.224.201:2375"
+  before_script:
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" zoo.smok.co
   script:
     - docker service update --with-registry-auth --image `cat conqueror.digest` conqueror
   dependencies:
     - build
-  before_script:
-    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" zoo.smok.co
