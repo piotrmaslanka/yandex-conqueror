@@ -12,3 +12,4 @@ pyjwt
 markupsafe==2.0.*
 cassandra-driver
 pyyaml
+satella

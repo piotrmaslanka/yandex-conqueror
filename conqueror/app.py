@@ -22,7 +22,7 @@ app.config['TESTING'] = os.environ.get('CI', '0') == '1'
 
 flask_json.FlaskJSON(app)
 CORS(app, supports_credentials=True)
-FlaskRequestsLogging(app, pass_as_extras=False)
+FlaskRequestsLogging(app)
 
 with open('/app/app-template.yml', 'r') as f_in:
     template = yaml.load(f_in, Loader=yaml.Loader)
@@ -43,3 +43,5 @@ SatellaMetricsMiddleware(app, summary_metric=getMetric('yandex.api.call_time.sum
                          response_codes_metric=getMetric('yandex.api.response_codes', 'counter'))
 
 app.register_blueprint(PrometheusExporter({'service_name': 'yandex'}))
+
+

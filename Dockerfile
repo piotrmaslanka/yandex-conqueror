@@ -12,7 +12,7 @@ ADD app-template.yml /app/app-template.yml
 ADD resources /app/resources
 ADD conqueror /app/conqueror
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:80", "conqueror.app:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:80", "conqueror.run:app"]
 
 FROM runtime AS unittest
 

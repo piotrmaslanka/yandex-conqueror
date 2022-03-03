@@ -8,6 +8,8 @@ services:
       target: runtime
     depends_on:
       - cassandra
+    ports:
+      - "80:80"
   unittest:
     build:
       context: .
