@@ -9,5 +9,4 @@ If you'd like to join, DM me at Facebook Messenger.
 Urgent needs
 ============
 
-I need a person with fluent Russian to generate the messages, and a specialist in crawling websites to actually
-gather the information required from Yandex. Also, a list of Russian cities would be appreciated.
+We need linear code monkeys to create new Yandex accounts. Contact me @ Facebook DM or at WhatsApp or Signal at +48603986955.
