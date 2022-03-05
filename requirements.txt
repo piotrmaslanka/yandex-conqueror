@@ -1,3 +1,6 @@
+# Basic dependencies
+satella
+
 # WSGI server
 gunicorn
 
@@ -8,9 +11,12 @@ flask-requests-logging>=0.5
 flask-cors
 flask-json
 flasgger
-pyjwt
+# following is due to a bug in Jinja2
 markupsafe==2.0.*
+
+# Cassandra connectivity
 cassandra-driver
+# External parsers
 pyyaml
 satella
 pandas

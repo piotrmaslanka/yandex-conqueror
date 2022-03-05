@@ -3,9 +3,9 @@ from conqueror.cassandra import session
 from conqueror.utils import as_json
 
 
-@app.route('/v1/get-businesses/<string:sector>')
+@app.route('/v1/view-businesses/<string:sector>')
 @as_json
-def get_businesses(section: str):
+def get_businesses(sector: str):
     """
     Get a list of Russian businesses to post reviews for
     ---
