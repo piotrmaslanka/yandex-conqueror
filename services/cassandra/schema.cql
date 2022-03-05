@@ -10,3 +10,19 @@ CREATE TABLE yandex.accounts (
     status INT, -- 0 - active, 1 - suspended
     PRIMARY KEY (email)
 );
+
+
+CREATE TABLE yandex.businesses (
+    sector      TEXT,               -- sector, as defined before
+    businessID TEXT,                -- yandex business ID
+    reqId      TEXT,                -- request ID, gained through Yandex searches
+    PRIMARY KEY (sector, businessID)
+);
+
+
+CREATE TABLE yandex.entries (
+    apiKey  TEXT,
+    entries INT,
+    PRIMARY KEY (apiKey);
+);
+
