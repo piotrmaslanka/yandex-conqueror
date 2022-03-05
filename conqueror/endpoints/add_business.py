@@ -5,7 +5,7 @@ from conqueror.cassandra import session
 from conqueror.utils import as_json
 
 
-@app.route('/v1/add-businesses')
+@app.route('/v1/add-businesses', methods=['PUT'])
 @as_json
 def add_business():
     """
