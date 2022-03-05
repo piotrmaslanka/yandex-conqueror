@@ -13,3 +13,7 @@ class TestAddBusiness(unittest.TestCase):
         self.assertEqual(resp.status_code, 201)
         d = list(session.execute('SELECT * FROM businesses WHERE sector=%s', ('1234', )))
         self.assertEqual(len(d), 1)
+
+        resp = self.client.get('/v1/view-businesses/1234')
+        self.assertEqual(resp.status_code, 200)
+        self.assertGreaterEqual(len(resp.data), 1)

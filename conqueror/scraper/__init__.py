@@ -1,5 +1,7 @@
+import math
 import queue
 import threading
+from random import random
 import time
 from satella.coding.concurrent import TerminableThread
 
@@ -7,7 +9,23 @@ from satella.coding.concurrent import TerminableThread
 API_ENQUIRY_EACH_SECOND = 4     # a query each 4 seconds
 
 
-def ask(city, item, bbox1, bbox2):
+
+def get_fai(lat: float, lon: float, radius: float) -> tuple[float, float]:
+    """
+    Get a coordinates for a fairly chosen fircle within lat and lon 
+    
+    :param lat: geo latitude in degrees, + is N
+    :param lon: geo longitude in degrees, + is E
+    :param radius: radius in kilometres 
+    :return: a tuple of (lat, lon)
+    """
+    radius = 2*math.pi*random()
+    u = random()+random()
+    if u > 1:
+        r = 2-u
+    else:
+        r = u
+    return [r*math.cos(t), r*math.sin(t)]
 
 
 
