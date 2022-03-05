@@ -1,6 +1,5 @@
 import os
 import pathlib
-import logging as log
 
 import pandas as pd
 
@@ -29,7 +28,6 @@ class DataImporter:
             },
             errors="raise",
         )
-        print(df.dtypes)
         self.save_into_json(df)
 
     @staticmethod
