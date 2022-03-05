@@ -13,3 +13,6 @@ markupsafe==2.0.*
 cassandra-driver
 pyyaml
 satella
+pandas
+xlrd
+openpyxl
