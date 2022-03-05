@@ -40,7 +40,6 @@ def read_cities() -> tp.List[City]:
             for column in columns:
                 dct[column] = data[column][key]
 
-            print(dct)
             results.append(City(**dct))
     return results
 

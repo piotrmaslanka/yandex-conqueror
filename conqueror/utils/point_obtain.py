@@ -1,18 +1,20 @@
 import math
-import random
+from random import random
 
 
-def random_point() -> tuple[float, float]:
+def random_point(r: float) -> tuple[float, float]:
     """
     Pick a mathematically sane random circle around the point of (0, 0) with a radius of 1.
 
+    :param r: radius
     :return: a tuple with either X and Y of the point
     """
     t = 2*math.pi*random()
     u = random()+random()
-    u = 2-u if u > 1 else u
+    v = 2-u if u > 1 else u
 
-    return [r*math.cos(t), r*math.sin(t)]
+    return [v*math.cos(t)*r, v*math.sin(t)*r]
+
 
 
 

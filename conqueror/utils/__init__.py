@@ -1,6 +1,8 @@
 from flask import Response
 from satella.json import json_encode
 from satella.coding import wraps
+from .geom2d import kilometers_to_degrees_lon, kilometers_to_degrees_lat, \
+    degrees_to_kilometers_lon, degrees_to_kilometers_lat
 
 
 def as_json(fun):
