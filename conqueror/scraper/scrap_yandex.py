@@ -15,6 +15,7 @@ def search_on_yandex(**kwargs: tp.Dict[str, str]):
 
 
 def extract_point_coordinates(scraped_points) -> None:
+    """If it's point, extract coordinates(latitude & longitude)."""
     for feature_key in scraped_points["features"]:
         for geo_key, coordinates in feature_key["geometry"].items():
             if isinstance(coordinates, list):
