@@ -1,9 +1,9 @@
 import random
 
 from conqueror.scraper.data_reader import City, read_cities
-from conqueror.scraper.point_obtain import random_point
 from conqueror.utils.geom2d import degrees_to_kilometers_lat, degrees_to_kilometers_lon, kilometers_to_degrees_lon, \
     kilometers_to_degrees_lat
+from conqueror.utils.point_obtain import random_point
 
 
 class OrdersObtainer:
