@@ -16,11 +16,14 @@ def search_on_yandex(**kwargs: tp.Dict[str, str]):
 
 def extract_point_coordinates(scraped_points) -> None:
     """If it's point, extract coordinates(latitude & longitude)."""
-    for feature_key in scraped_points["features"]:
-        for geo_key, coordinates in feature_key["geometry"].items():
-            if isinstance(coordinates, list):
-                latitude, longitude = coordinates[0], coordinates[1]
-                print(f"Latitude: {latitude}, Longitude: {longitude}")
+    try:
+        for feature_key in scraped_points["features"]:
+            for geo_key, coordinates in feature_key["geometry"].items():
+                if isinstance(coordinates, list):
+                    latitude, longitude = coordinates[0], coordinates[1]
+                    print(f"Latitude: {latitude}, Longitude: {longitude}")
+    except KeyError as k_err:
+        raise k_err
 
 
 scraped_points = search_on_yandex(**dict(YandexAPISchema(text="test")))
