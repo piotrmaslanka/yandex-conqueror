@@ -27,6 +27,9 @@ def run():
 
         try:
             for data_point in points['features']:
+
+                if 'CompanyMetaData' not in data_point['properties']:
+                    continue
                 name = data_point['properties']['name']
                 company_id = data_point['properties']['CompanyMetaData']['id']
                 geo_lon, geo_lat = data_point['geometry']['coordinates']
