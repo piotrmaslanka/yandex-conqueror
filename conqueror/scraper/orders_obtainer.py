@@ -28,6 +28,7 @@ class OrdersObtainer:
         for threshold, city in zip(self.thresholds, self.cities):
             if pop < threshold:
                 return city
+        return city[-1]
 
     def get_random_point(self, city: City) -> tuple[float, float]:
         geoCenterLat, geoCenterLon = city.lat, city.lon
