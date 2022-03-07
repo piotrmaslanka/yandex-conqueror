@@ -13,5 +13,5 @@ A a Docker container as a backend with a Cassandra runner.
 To run the scraper:
 
 ```bash
-python -m conqueror.scraper <apikey>
+python -m conqueror.scraper <apikey> <amountOfRequestsToDo>
 ```

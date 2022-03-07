@@ -1,14 +1,7 @@
 import time
 
 from conqueror.scraper.orders_obtainer import OrdersObtainer
-from conqueror.scraper.pulse_coordinator import PulseCoordinator
-
-
-def run():
-    pc = PulseCoordinator(OrdersObtainer())
-    pc.start()
-    while True:
-        time.sleep(100000)
+from .pulse_coordinator import run
 
 
 if __name__ == '__main__':
