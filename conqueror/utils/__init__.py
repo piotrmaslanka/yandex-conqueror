@@ -15,6 +15,7 @@ def as_json(fun):
 
     Every dict and list returned will be stringified with Satella's stringify
     """
+
     @wraps(fun)
     def outer(*args, **kwargs):
         data = fun(*args, **kwargs)

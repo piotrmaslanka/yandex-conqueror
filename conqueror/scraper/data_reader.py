@@ -11,9 +11,6 @@ BASE_FILES_LOC: str = os.path.join(
 )
 
 
-
-
-
 @dataclasses.dataclass
 class City:
     city_in_english: str
@@ -39,4 +36,3 @@ def read_cities() -> tp.List[City]:
 
             results.append(City(**dct))
     return results
-

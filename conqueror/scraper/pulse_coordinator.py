@@ -30,11 +30,12 @@ def run():
                 name = data_point['properties']['name']
                 company_id = data_point['properties']['CompanyMetaData']['id']
                 geo_lon, geo_lat = data_point['geometry']['coordinates']
-                session.execute('INSERT INTO businesses (sector, businessId, geoLat, geoLon, name) VALUES (%s, %s, %s, %s, %s)',
-                                (
-                                    city.city_in_english,
-                                    company_id, geo_lat, geo_lon, name
-                                ))
+                session.execute(
+                    'INSERT INTO businesses (sector, businessId, geoLat, geoLon, name) VALUES (%s, %s, %s, %s, %s)',
+                    (
+                        city.city_in_english,
+                        company_id, geo_lat, geo_lon, name
+                    ))
         except Exception as e:
             print(Traceback().pretty_format())
-        print('Inserted %s data points into Cassandra', len(points['features']))
+        print('Inserted ', len(points['features']), ' data points into Cassandra')

@@ -7,8 +7,7 @@ from satella.coding.concurrent import TerminableThread
 
 from conqueror.scraper.orders_obtainer import OrdersObtainer
 
-API_ENQUIRY_EACH_SECOND = 4     # a query each 4 seconds
-
+API_ENQUIRY_EACH_SECOND = 4  # a query each 4 seconds
 
 
 def get_fai(lat: float, lon: float, radius: float) -> tuple[float, float]:
@@ -20,14 +19,13 @@ def get_fai(lat: float, lon: float, radius: float) -> tuple[float, float]:
     :param radius: radius in kilometres 
     :return: a tuple of (lat, lon)
     """
-    radius = 2*math.pi*random()
-    u = random()+random()
+    radius = 2 * math.pi * random()
+    u = random() + random()
     if u > 1:
-        r = 2-u
+        r = 2 - u
     else:
         r = u
-    return [r*math.cos(t), r*math.sin(t)]
-
+    return [r * math.cos(t), r * math.sin(t)]
 
 
 class PermissionGenerator(threading.Thread):
@@ -48,5 +46,4 @@ class ScrapingThread(TerminableThread):
 
     def run(self):
         while not self._terminating:
-            self.pg.queue.get(True)     # obtain the permission to scrape
-
+            self.pg.queue.get(True)  # obtain the permission to scrape

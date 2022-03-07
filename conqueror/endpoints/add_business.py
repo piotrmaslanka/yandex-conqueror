@@ -52,5 +52,5 @@ def add_business():
 
         session.execute('INSERT INTO businesses (businessId, sector, GeoLat, geoLon, name) VALUES (%s, %s, %s, %s, %s)',
                         (businessId, sector, lat, lon, name))
-        session.execute('INSERT INTO sectors (sector) VALUES (%s)', (sector, ))
+        session.execute('INSERT INTO sectors (sector) VALUES (%s)', (sector,))
     return {}, 201

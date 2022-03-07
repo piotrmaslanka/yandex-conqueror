@@ -10,6 +10,7 @@ class OrdersObtainer:
     """
     A generator of fair orders
     """
+
     def __init__(self):
         cities = read_cities()
         self.thresholds = [0]
@@ -33,7 +34,8 @@ class OrdersObtainer:
     def get_random_point(self, city: City) -> tuple[float, float]:
         geoCenterLat, geoCenterLon = city.lat, city.lon
 
-        radis_x, radis_y = degrees_to_kilometers_lat( geoCenterLat), degrees_to_kilometers_lon(geoCenterLon, geoCenterLat),
+        radis_x, radis_y = degrees_to_kilometers_lat(geoCenterLat), degrees_to_kilometers_lon(geoCenterLon,
+                                                                                              geoCenterLat),
         dx, dy = random_point(city.radius_km)
         radis_x += dx
         radis_y += dy

@@ -43,5 +43,3 @@ SatellaMetricsMiddleware(app, summary_metric=getMetric('yandex.api.call_time.sum
                          response_codes_metric=getMetric('yandex.api.response_codes', 'counter'))
 
 app.register_blueprint(PrometheusExporter({'service_name': 'yandex'}))
-
-

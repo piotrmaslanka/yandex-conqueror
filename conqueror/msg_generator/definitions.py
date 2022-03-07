@@ -29,4 +29,5 @@ class MessagePiece:
     def __str__(self):
         def replacer(match):
             return random.choice(match.group(1).split('|'))
+
         return re.sub(REPL_RE, replacer, self.msg_content)

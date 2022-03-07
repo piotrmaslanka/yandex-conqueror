@@ -28,7 +28,7 @@ def get_businesses(sector: str):
                             type: string
                             description: Business ID of the object
     """
-    resp = session.execute('SELECT businessId FROM businesses WHERE sector=%s', (sector, ))
+    resp = session.execute('SELECT businessId FROM businesses WHERE sector=%s', (sector,))
     results = []
     for datum in resp:
         results.append(datum[0])
