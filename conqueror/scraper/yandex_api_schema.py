@@ -20,7 +20,7 @@ class YandexAPISchema:
     """
     text: str
     lang: str = "ru_ru"
-    apikey: str = "92fc22bd27f647b1aead2be3e47346f5"
+    apikey: str = "558d43d5-79eb-40c6-938d-e303ab670a3b"
     ll: tp.Optional[str] = ""
     spn: tp.Optional[str] = "0.016,0.016"
     type: tp.Optional[str] = ""
