@@ -21,6 +21,6 @@ class PulseCoordinator(IntervalTerminableThread):
                                 ll=f'{point[0]},{point[1]}')
 
         query_d = dict(query)
-
+        print(query_d)
         points = search_on_yandex(**query_d)
         print(points)

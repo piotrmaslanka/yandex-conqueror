@@ -24,6 +24,7 @@ class YandexAPISchema:
     ll: tp.Optional[str] = ""
     spn: tp.Optional[str] = "0.016,0.016"
     type: tp.Optional[str] = ""
+    results: tp.Optional[str] = "500"
 
     def __iter__(self):
         """Allow to transform dataclass into dict."""
