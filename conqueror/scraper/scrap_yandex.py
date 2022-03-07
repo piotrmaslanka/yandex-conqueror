@@ -11,7 +11,9 @@ def search_on_yandex(**kwargs: tp.Dict[str, str]):
     :returns: Json with scraped information about points.
     """
     url: str = "https://search-maps.yandex.ru/v1/?"
-    return requests.get(url=url, timeout=5, params={**kwargs}).json()
+    resp = requests.get(url=url, timeout=5, params={**kwargs})
+    resp.raise_for_status()
+    return resp.json()
 
 
 def extract_point_coordinates(scraped_points) -> None:
