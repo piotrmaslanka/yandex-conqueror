@@ -3,28 +3,6 @@ import requests
 import random, time
 from selenium import webdriver
 
-def loguj(driver, login, haslo):
-    login_url = 'https://passport.yandex.ru/auth/welcome?origin=maps'
-    driver.get(login_url)
-    print(driver.title)
-    print(driver.page_source)
-
-    login_tb = driver.find_element_by_id('passp-field-login')
-    login_tb.send_keys(login)
-
-    logib_btn = driver.find_element_by_id('passp:sign-in')
-    logib_btn.click()
-
-    time.sleep(1)
-
-    login_tb = driver.find_element_by_id('passp-field-passwd')
-    login_tb.send_keys(haslo)
-    
-
-
-
-    #driver.close()
-
 
 
 if __name__ == '__main__':
