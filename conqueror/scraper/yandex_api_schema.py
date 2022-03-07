@@ -33,5 +33,4 @@ class YandexAPISchema:
         yield "apikey", self.apikey
         yield "ll", self.ll
         yield "spn", self.spn
-        yield "type", self.type
         yield "results", self.results
