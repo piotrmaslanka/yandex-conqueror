@@ -19,7 +19,7 @@ class YandexAPISchema:
         - 'omitted', automatically detect the type based on the query text
     """
     text: str
-    lang: str = "en_us"
+    lang: str = "ru_ru"
     apikey: str = "161665c4-6a57-4031-ac15-c8abb2dd0808"
     ll: tp.Optional[str] = ""
     spn: tp.Optional[str] = ""
