@@ -24,7 +24,3 @@ def extract_point_coordinates(scraped_points) -> None:
                     print(f"Latitude: {latitude}, Longitude: {longitude}")
     except KeyError as k_err:
         raise k_err
-
-
-scraped_points = search_on_yandex(**dict(YandexAPISchema(text="test")))
-extract_point_coordinates(scraped_points)
