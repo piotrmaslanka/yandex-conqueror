@@ -1,3 +1,5 @@
+import sys
+
 from satella.coding.concurrent import IntervalTerminableThread
 
 from conqueror.scraper.get_object_types import get_random_object_type
@@ -17,7 +19,8 @@ class PulseCoordinator(IntervalTerminableThread):
 
         utility_point = get_random_object_type()
 
-        query = YandexAPISchema(text=f'{city.city_in_russian} {utility_point}',
+        query = YandexAPISchema(apikey=sys.argv[1],
+                                text=f'{city.city_in_russian} {utility_point}',
                                 ll=f'{point[0]},{point[1]}')
 
         query_d = dict(query)
