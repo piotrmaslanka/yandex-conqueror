@@ -6,14 +6,9 @@ import time
 from satella.coding.concurrent import TerminableThread
 
 from conqueror.scraper.orders_obtainer import OrdersObtainer
-from conqueror.scraper.pulse_coordinator import PulseCoordinator
 
 API_ENQUIRY_EACH_SECOND = 4     # a query each 4 seconds
 
-
-def run():
-    pc = PulseCoordinator(OrdersObtainer())
-    pc.start()
 
 
 def get_fai(lat: float, lon: float, radius: float) -> tuple[float, float]:
