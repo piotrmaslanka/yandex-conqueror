@@ -1,8 +1,9 @@
+from conqueror.scraper.orders_obtainer import OrdersObtainer
 from conqueror.scraper.pulse_coordinator import PulseCoordinator
 
 
 def run():
-    pc = PulseCoordinator()
+    pc = PulseCoordinator(OrdersObtainer())
     pc.start()
 
 
