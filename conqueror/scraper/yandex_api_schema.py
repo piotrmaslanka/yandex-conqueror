@@ -28,9 +28,10 @@ class YandexAPISchema:
 
     def __iter__(self):
         """Allow to transform dataclass into dict."""
-        if self.text: yield "text", self.text
-        if self.lang: yield "lang", self.lang
-        if self.apikey: yield "apikey", self.apikey
-        if self.ll: yield "ll", self.ll
-        if self.spn: yield "spn", self.spn
-        if self.type: yield "type", self.type
+        yield "text", self.text
+        yield "lang", self.lang
+        yield "apikey", self.apikey
+        yield "ll", self.ll
+        yield "spn", self.spn
+        yield "type", self.type
+        yield "results", self.results
