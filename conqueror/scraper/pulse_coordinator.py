@@ -9,7 +9,7 @@ from conqueror.scraper.yandex_api_schema import YandexAPISchema
 class PulseCoordinator(IntervalTerminableThread):
     def __init__(self, po: OrdersObtainer):
         self.po = po
-        super().__init__(daemon=True)
+        super().__init__(4, daemon=True)
 
     def loop(self):
         city = self.po.get_random_city()

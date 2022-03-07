@@ -24,9 +24,6 @@ class City:
     lon: float
 
 
-
-
-
 def read_cities() -> tp.List[City]:
     with open(os.path.join(BASE_FILES_LOC, "russian-cities.json")) as json_f:
         data = json.load(json_f)

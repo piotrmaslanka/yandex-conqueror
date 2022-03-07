@@ -15,17 +15,17 @@ class OrdersObtainer:
         self.thresholds = [0]
         self.cities = []
         pop_cntr = 0
-        for i, city in cities:
+        for i, city in enumerate(cities):
             pop_cntr += city.population
             self.thresholds.append(pop_cntr)
-            self.cities.append(City)
+            self.cities.append(city)
 
     def get_random_city(self) -> City:
         """
         Select a random city thanks to a built-in property distributor
         """
         pop = random.randint(0, self.thresholds[-1])
-        for threshold, city in self.thresholds, self.cities:
+        for threshold, city in zip(self.thresholds, self.cities):
             if pop < threshold:
                 return city
 
