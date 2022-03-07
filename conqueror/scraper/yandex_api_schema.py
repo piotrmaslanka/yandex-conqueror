@@ -22,7 +22,7 @@ class YandexAPISchema:
     lang: str = "ru_ru"
     apikey: str = "558d43d5-79eb-40c6-938d-e303ab670a3b"
     ll: tp.Optional[str] = ""
-    spn: tp.Optional[str] = "0.03,0.03"
+    spn: tp.Optional[str] = "0.05,0.05"
     type: tp.Optional[str] = ""
     results: tp.Optional[str] = "500"
 
