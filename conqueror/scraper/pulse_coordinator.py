@@ -10,9 +10,10 @@ from conqueror.scraper.yandex_api_schema import YandexAPISchema
 
 
 def run():
+    po = OrdersObtainer()
     for i in range(0, int(sys.argv[2])):
-        city = self.po.get_random_city()
-        point = self.po.get_random_point(city)
+        city = po.get_random_city()
+        point = po.get_random_point(city)
 
         utility_point = get_random_object_type()
 
