@@ -8,7 +8,7 @@ Lista [kontrybutorów](CONTRIBUTORS.md) dostępna w osobnym pliku.
 Ways to run this repo?
 ======================
 
-A a Docker container as a backend with a Cassandra runner.
+As a Docker container as a backend with a Cassandra runner.
 
 To run the scraper:
 
