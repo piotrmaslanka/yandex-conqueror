@@ -37,17 +37,9 @@ def get_businesses(sector: str):
 
 @app.route('/v1/view-businesses')
 @as_json
-def get_businesses_all(sector: str):
+def get_businesses_all():
     """
     Get a list of all Russian businesses to post reviews for
-    ---
-    parameters:
-    - in: path
-      name: sector
-      schema:
-        type: string
-      description: Name of Russian city in Latin alphabet
-      required: true
     ---
     responses:
         '200':
