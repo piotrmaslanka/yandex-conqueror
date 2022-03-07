@@ -1,6 +1,5 @@
 import sys
 
-from satella.coding.concurrent import TerminableThread
 from satella.instrumentation import Traceback
 
 from conqueror.cassandra import session
