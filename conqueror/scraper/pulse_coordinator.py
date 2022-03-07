@@ -20,7 +20,7 @@ def run():
 
         query = YandexAPISchema(apikey=sys.argv[1],
                                 text=f'{city.city_in_russian} {utility_point}',
-                                ll=f'{point[0]},{point[1]}')
+                                ll=f'{point[1]},{point[0]}')
 
         query_d = dict(query)
         points = search_on_yandex(**query_d)
