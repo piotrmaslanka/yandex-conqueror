@@ -9,7 +9,7 @@ from conqueror.scraper.scrap_yandex import search_on_yandex
 from conqueror.scraper.yandex_api_schema import YandexAPISchema
 
 
-def run(self):
+def run():
     for i in range(0, int(sys.argv[2])):
         city = self.po.get_random_city()
         point = self.po.get_random_point(city)
