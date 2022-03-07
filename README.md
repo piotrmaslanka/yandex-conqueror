@@ -15,3 +15,11 @@ To run the scraper:
 ```bash
 python -m conqueror.scraper <apikey> <amountOfRequestsToDo>
 ```
+
+To run the actual bot
+
+```bash
+python -m conqueror <yandex login> <yandex password>
+```
+
+The bot will choose 10 Russian cities and continue on to spread our propaganda.
