@@ -17,7 +17,8 @@ class PulseCoordinator(IntervalTerminableThread):
 
         utility_point = get_random_object_type()
 
-        query = YandexAPISchema(text=f'{city.city_in_russian} {utility_point}')
+        query = YandexAPISchema(text=f'{city.city_in_russian} {utility_point}',
+                                ll=f'{point[0]},{point[1]}')
 
         query_d = dict(query)
 
