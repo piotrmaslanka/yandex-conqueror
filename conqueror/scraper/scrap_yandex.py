@@ -2,7 +2,7 @@ import typing as tp
 
 import requests
 
-from yandex_api_schema import YandexAPISchema
+from .yandex_api_schema import YandexAPISchema
 
 
 def search_on_yandex(**kwargs: tp.Dict[str, str]):

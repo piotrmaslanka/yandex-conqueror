@@ -14,6 +14,8 @@ flasgger
 # following is due to a bug in Jinja2
 markupsafe==2.0.*
 
+# Scraping library
+requests
 # Cassandra connectivity
 cassandra-driver
 # External parsers
