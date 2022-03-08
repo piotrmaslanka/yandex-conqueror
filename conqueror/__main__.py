@@ -160,9 +160,6 @@ python -m conqueror <login to yandex> <password to yandex>
     print('Login=', login, 'password=', haslo)
     zalogowano = False
 
-    spam('https://yandex.ru/maps/org/itle/1055926052')
-    sys.exit(0)
-
     for i in random.sample(target_list, 20):
         spam(f'https://yandex.ru/maps/org/itle/{i}')
     driver.close()
