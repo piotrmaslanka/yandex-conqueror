@@ -27,7 +27,6 @@ def add_review(login: str):
     else:
         entries = resp[0][0]
         session.execute('INSERT INTO review_count (apiKey, count) VALUES (%s, %s)', (login, entries+1))
-    return {}
 
 
 @app.route('/v1/view-reviews')

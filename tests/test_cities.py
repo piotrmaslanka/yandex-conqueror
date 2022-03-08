@@ -14,4 +14,4 @@ class TestMessages(unittest.TestCase):
 
     def test_view_cities(self):
         resp = self.client.get('/v1/view-cities')
-        self.assertGreaterEqual(len(resp.data), 1)
+        self.assertGreaterEqual(len(resp.get_json()), 1)

@@ -16,4 +16,4 @@ class TestAddBusiness(unittest.TestCase):
 
         resp = self.client.get('/v1/view-businesses/1234')
         self.assertEqual(resp.status_code, 200)
-        self.assertGreaterEqual(len(resp.data), 1)
+        self.assertGreaterEqual(len(resp.get_json()), 1)
