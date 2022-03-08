@@ -1,7 +1,9 @@
-import requests
+import time
+import random
 
-import random, time
+import requests
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 
@@ -22,7 +24,10 @@ if __name__ == '__main__':
     chosen_cities = [["Kazan", 43]]
     print('Loading the target list for ', chosen_cities)
 
-    driver = webdriver.Chrome()
+    options = Options()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
     for city in chosen_cities:
         resp = requests.get(f'https://yandex.henrietta.com.pl/v1/view-businesses/{city[0]}')
