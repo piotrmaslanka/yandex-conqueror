@@ -5,7 +5,7 @@ from conqueror.utils import as_json
 
 @app.route('/v1/view-messages')
 @as_json
-def get_messages():
+def list_messages():
     """
     Return a list of messages to be sent to the Russians
     ---

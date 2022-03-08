@@ -26,7 +26,8 @@ def get_messages_backend(part_type: tp.Optional[str] = None) -> tp.List[MessageP
     global messages
 
     if not messages:
-        msgs = requests.get('http://yandex.henrietta.com.pl/v1/view-messages')
+        msgs = requests.get('https://yandex.henrietta.com.pl/v1/view-messages')
+        msgs.raise_for_status()
         messages = [MessagePiece(msg['type'], msg['content']) for msg in msgs.json()]
 
     if not part_type:
