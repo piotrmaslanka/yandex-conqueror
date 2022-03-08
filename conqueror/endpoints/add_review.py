@@ -21,12 +21,12 @@ def add_review(login: str):
         '200':
             description: Added
     """
-    resp = list(session.execute('SELECT count FROM entries WHERE apiKey=%s', (login,)))
+    resp = list(session.execute('SELECT count FROM review_count WHERE apiKey=%s', (login,)))
     if not resp:
-        session.execute('INSERT INTO entries (apiKey, count) VALUES (%s, 1)', (login, ))
+        session.execute('INSERT INTO review_count (apiKey, count) VALUES (%s, 1)', (login, ))
     else:
         entries = resp[0][0]
-        session.execute('INSERT INTO entries (apiKey, count) VALUES (%s, %s)', (login, entries+1))
+        session.execute('INSERT INTO review_count (apiKey, count) VALUES (%s, %s)', (login, entries+1))
     return {}
 
 
@@ -48,6 +48,6 @@ def view_reviews():
                                 type: integer
                                 description: All entries added
     """
-    resp = session.execute('SELECT count FROM entries')
+    resp = session.execute('SELECT count FROM review_count')
     entries = sum(d[0] for d in resp)
     return {'entries': entries}

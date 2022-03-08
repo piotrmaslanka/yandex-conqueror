@@ -28,9 +28,9 @@ CREATE TABLE yandex.businesses (
 );
 
 
-CREATE TABLE yandex.entries (
+CREATE TABLE yandex.review_count (
     apiKey  TEXT,
     count INT,
-    PRIMARY KEY (apiKey);
+    PRIMARY KEY (apiKey)
 );
 
