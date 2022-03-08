@@ -132,15 +132,14 @@ python -m conqueror <login to yandex> <password to yandex>
 
     options = Options()
     options = webdriver.ChromeOptions()
-    # options.add_argument("--headless")
+    if '--headless' in sys.argv:
+        options.add_argument("--headless")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     for city in chosen_cities:
         resp = requests.get(f'https://yandex.henrietta.com.pl/v1/view-businesses/{city[0]}')
         resp.raise_for_status()
         target_list.extend(resp.json())
-
-    #print('Tne entire target list looks like now: ', target_list)
 
     login, haslo = sys.argv[1:3]
     print('Login=', login, 'password=', haslo)

@@ -22,4 +22,11 @@ To run the actual bot
 python -m conqueror <yandex login> <yandex password>
 ```
 
-The bot will choose 10 Russian cities and continue on to spread our propaganda. It will deposit 20 messages.
+The bot will choose 10 Russian cities and continue on to spread our propaganda. It will deposit the messages until
+stopped:
+
+To run it in headless mode please type:
+
+```bash
+python -m conqueror <yandex login> <yandex password> --headless
+```
