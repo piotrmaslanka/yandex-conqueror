@@ -13,7 +13,7 @@ class OrdersObtainer:
 
     def __init__(self):
         cities = read_cities()
-        self.thresholds = [0]
+        self.thresholds = []
         self.cities = []
         pop_cntr = 0
         for i, city in enumerate(cities):
