@@ -54,6 +54,8 @@ def spam(url):
 
         time.sleep(3)
 
+        msg = generate_message_client()
+
         if not zalogowano:
 
             driver.find_element_by_class_name("login-dialog-view__button").click()
@@ -98,8 +100,6 @@ def spam(url):
             zalogowano = True
 
         t4 = driver.find_element_by_class_name("textarea__control")
-        msg = generate_message_client()
-        print('Spaming forth with', msg)
         t4.send_keys(msg)
 
         time.sleep(1)
@@ -110,19 +110,7 @@ def spam(url):
 
         driver.find_element_by_class_name("business-review-form__controls").find_elements_by_tag_name("div")[0].click()
 
-        print('''OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK for url''', url)
+        print('OK for url: ', url)
 
         time.sleep(1)
     except Exception as ex:
@@ -136,6 +124,7 @@ if __name__ == '__main__':
         print('''The correct way to load this script is to'
 python -m conqueror <login to yandex> <password to yandex>
 ''')
+        sys.exit(1)
 
     chosen_cities = random.sample(cities, 10)
 
