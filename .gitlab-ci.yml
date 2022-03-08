@@ -40,3 +40,4 @@ deploy:
     - docker service update --with-registry-auth --image `cat conqueror.digest` conqueror
   dependencies:
     - build
+  when: manual
