@@ -4,6 +4,8 @@ import random
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 
@@ -27,7 +29,7 @@ if __name__ == '__main__':
     options = Options()
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     for city in chosen_cities:
         resp = requests.get(f'https://yandex.henrietta.com.pl/v1/view-businesses/{city[0]}')
