@@ -25,8 +25,6 @@ class OrdersObtainer:
         """
         Select a random city thanks to a built-in property distributor
         """
-        return self.cities[0]  # return Moscow to fix some earlier bugs
-                               # TODO unroll it later
         pop = random.randint(0, self.thresholds[-1])
         for threshold, city in zip(self.thresholds, self.cities):
             if pop < threshold:
