@@ -22,4 +22,4 @@ To run the actual bot
 python -m conqueror <yandex login> <yandex password>
 ```
 
-The bot will choose 10 Russian cities and continue on to spread our propaganda.
+The bot will choose 10 Russian cities and continue on to spread our propaganda. It will deposit 20 messages.

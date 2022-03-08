@@ -1,3 +1,4 @@
+import sys
 import time
 import random
 
@@ -7,20 +8,18 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-
+from conqueror.msg_generator.messages import generate_message_client
 
 if __name__ == '__main__':
-    cities = ["Moscow", 'Saint Petersburg', 'Novosibirsk', 'Yekaterinburg', 'Kazan', 'Nizhny Novgorod', 'Chelyabinsk',
-              'Samara', 'Omsk', 'Rostov-on-Don', 'Ufa', 'Krasnoyarsk', 'Voronezh', 'Perm', 'Volgograd',
-              'Krasnodar', 'Saratov', 'Tyumen', 'Tolyatti', 'Izhevsk', 'Barnaul', 'Ulyanovsk', 'Irkutsk',
-              'Khabarovsk', 'Makhachkala', 'Yaroslavl', 'Vladivostok', 'Orenburg', 'Tomsk', 'Kemerovo',
-              'Novokuznetsk', 'Ryazan', 'Naberezhnye Chelny', 'Astrakhan', 'Kirov', 'Penza', 'Lipetsk',
-              'Cheboksary', 'Kaliningrad', 'Tula', 'Sevastopol', 'Stavropol', 'Kursk', 'Ulan-Ude', 'Sochi',
-              'Tver', 'Magnitogorsk', 'Ivanovo', 'Bryansk', 'Belgorod']
+    cities = [city['name'] for city in requests.get('https://yandex.henrietta.com.pl/v1/view-cities').json()]
+
+    if len(sys.argv) < 3:
+        print('''The correct way to load this script is to'
+python -m conqueror <login to yandex> <password to yandex>
+''')
 
     chosen_cities = random.sample(cities, 10)
 
-    
     target_list = []
 
     chosen_cities = [["Kazan", 43]]
@@ -38,12 +37,11 @@ if __name__ == '__main__':
 
     #print('Tne entire target list looks like now: ', target_list)
 
-    login = "jp2gmd5"
-    haslo = "jp2gmd925"
-
+    login, haslo = sys.argv[1:3]
+    print('Login=', login, 'password=', haslo)
     zalogowano = False
 
-    for i in target_list[20:]:
+    for i in random.sample(target_list, 20):
         try:
             url = f'https://yandex.ru/maps/org/itle/{i}'
             print("URL:", url)
@@ -125,7 +123,7 @@ if __name__ == '__main__':
                 zalogowano = True
 
             t4 = driver.find_element_by_class_name("textarea__control")
-            t4.send_keys("jebać putine kurwe skurwysyna")
+            t4.send_keys(generate_message_client())
 
             time.sleep(1)
 
