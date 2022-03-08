@@ -1,6 +1,7 @@
 import sys
 import time
 import random
+import typing as tp
 
 import requests
 from selenium import webdriver
@@ -150,21 +151,28 @@ def check_what_cites_are_reachable(random_cites) -> tp.List[str]:
     return reachable_cites
 
 
+def cli() -> tp.Tuple[str, str]:
+    if len(sys.argv) < 3:
+        print(
+            '''The correct way to load this script is to' python -m conqueror <login to yandex> <password to yandex> ''')
+        yandex_login = input("Provide login to your yandex account: ")
+        yandex_password = input("Provide password to your yandex account: ")
+    else:
+        yandex_login, yandex_password = sys.argv[1:3]
+        print('Login=', yandex_login, 'password=', yandex_password)
+
+    return yandex_login, yandex_password
+
+
 if __name__ == '__main__':
 
-    if len(sys.argv) < 3:
-        print('''The correct way to load this script is to'
-python -m conqueror <login to yandex> <password to yandex>
-''')
-        sys.exit(1)
+    yandex_login, yandex_password = cli()
 
     driver = setup_driver()
     random_cites = chose_random_cites()
     reachable_cites = check_what_cites_are_reachable(random_cites)
 
-    yandex_login, yandex_password = sys.argv[1:3]
-    print('Login=', yandex_login, 'password=', yandex_password)
-    random.shuffle(target_list)
+    random.shuffle(reachable_cites)
     print("Pomieszano cele")
 
     for i in target_list:
