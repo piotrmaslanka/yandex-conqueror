@@ -5,6 +5,8 @@ import random
 import re
 import typing as tp
 
+import requests
+
 REPL_RE = re.compile(r'\[(.*?)\]')
 
 
@@ -15,6 +17,22 @@ def get_messages(part_type: tp.Optional[str] = None) -> tp.List[MessagePiece]:
         return [MessagePiece.from_json(y) for y in data]
     else:
         return [MessagePiece.from_json(y) for y in data if y['type'] == part_type]
+
+
+messages = []
+
+
+def get_messages_backend(part_type: tp.Optional[str] = None) -> tp.List[MessagePiece]:
+    global messages
+
+    if not messages:
+        msgs = requests.get('http://yandex.henrietta.com.pl/v1/view-messages')
+        messages = [MessagePiece(msg['type'], msg['content']) for msg in msgs.json()]
+
+    if not part_type:
+        return messages
+    else:
+        return [msg for msg in messages if msg.msg_type == part_type]
 
 
 class MessagePiece:

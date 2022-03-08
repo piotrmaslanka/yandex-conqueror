@@ -24,3 +24,5 @@ satella
 pandas
 xlrd
 openpyxl
+selenium
+webdriver-manager
