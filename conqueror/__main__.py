@@ -16,7 +16,7 @@ zalogowano = False
 akceptuje_off = False
 
 
-def spam(url):
+def spam(login, haslo, url):
     global driver, zalogowano, akceptuje_off
 
     try:
@@ -112,8 +112,7 @@ def spam(url):
         driver.find_element_by_class_name("business-review-form__controls").find_elements_by_tag_name("div")[0].click()
 
         print('OK for url: ', url)
-        l = sys.argv[1]
-        requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{l}')
+        requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{login}')
         time.sleep(0.5)
     except Exception as ex:
         print(ex)
@@ -153,6 +152,6 @@ python -m conqueror <login to yandex> <password to yandex>
 
     for i in target_list:
         print("Cel:", i)
-        spam(f'https://yandex.ru/maps/org/itle/{i}')
+        spam(login, haslo, f'https://yandex.ru/maps/org/itle/{i}')
     driver.close()
 
