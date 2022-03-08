@@ -10,14 +10,61 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from conqueror.msg_generator.messages import generate_message_client
 
-driver = None
 url = None
-zalogowano = False
 akceptuje_off = False
 
 
-def spam(url):
-    global driver, zalogowano, akceptuje_off
+def login_into_yandex(driver, yandex_login: str, yandex_password: str):
+    # logujemy sie
+    driver.find_element_by_class_name("login-dialog-view__button").click()
+
+    time.sleep(1)
+
+    # login
+    login_tb = driver.find_element_by_id('passp-field-login')
+    login_tb.send_keys(yandex_login)
+
+    # przycisk logowania
+    logib_btn = driver.find_element_by_id('passp:sign-in')
+    logib_btn.click()
+
+    time.sleep(1)
+
+    # haslo
+    login_tb = driver.find_element_by_id('passp-field-passwd')
+    login_tb.send_keys(yandex_password)
+
+    time.sleep(0.7)
+
+    # przycisk logowania 2
+    driver.find_element_by_class_name("Button2_type_submit").click()
+
+    time.sleep(1)
+
+    # przy pierwszym logowaniu ever chce telefon
+    try:
+        driver.find_element_by_class_name("Button2_view_pseudo").click()
+        time.sleep(1)
+    except Exception as ex3:
+        print(ex3)
+
+    driver.execute_script("window.scrollTo(0, 600)")
+
+    time.sleep(1)
+
+    t2x = "business-rating-edit-view"
+    t2 = driver.find_element_by_class_name(t2x)
+    t3 = t2.find_elements_by_class_name("business-rating-edit-view__star")
+    t3[-1].click()
+
+    print("Zalogowano")
+    return True
+
+
+def spam(url, driver, yandex_login: str, yandex_password: str):
+    logged: bool = False
+
+    global akceptuje_off
 
     try:
         print("Spam dla URL:", url)
@@ -48,53 +95,9 @@ def spam(url):
         t3[-1].click()
         print("Kliknieto 5 gwiazdek")
         time.sleep(1)
-    
-        if not zalogowano:
-            # logujemy sie
-            driver.find_element_by_class_name("login-dialog-view__button").click()
 
-            time.sleep(1)
-
-            # login
-            login_tb = driver.find_element_by_id('passp-field-login')
-            login_tb.send_keys(login)
-
-            # przycisk logowania
-            logib_btn = driver.find_element_by_id('passp:sign-in')
-            logib_btn.click()
-
-            time.sleep(1)
-
-            # haslo
-            login_tb = driver.find_element_by_id('passp-field-passwd')
-            login_tb.send_keys(haslo)
-
-            time.sleep(0.7)
-
-            # przycisk logowania 2
-            driver.find_element_by_class_name("Button2_type_submit").click()
-
-            time.sleep(1)
-
-            # przy pierwszym logowaniu ever chce telefon
-            try:
-                driver.find_element_by_class_name("Button2_view_pseudo").click()
-                time.sleep(1)
-            except Exception as ex3:
-                print(ex3)
-
-            driver.execute_script("window.scrollTo(0, 600)")
-
-            time.sleep(1)
-
-            # klikemy 5 gwiazdek
-            t2x = "business-rating-edit-view"
-            t2 = driver.find_element_by_class_name(t2x)
-            t3 = t2.find_elements_by_class_name("business-rating-edit-view__star")
-            t3[-1].click()
-
-            zalogowano = True
-            print("Zalogowano")
+        if not logged:
+            logged = login_into_yandex(yandex_login, yandex_password, driver)
 
         # losujemy wiadomosc
         msg = generate_message_client()
@@ -118,9 +121,36 @@ def spam(url):
         print(ex)
 
 
-if __name__ == '__main__':
+def setup_driver():
+    options = Options()
+    options = webdriver.ChromeOptions()
+    if '--headless' in sys.argv:
+        options.add_argument("--headless")
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    return driver
+
+
+def chose_random_cites():
     cities = [city['name'] for city in requests.get('https://yandex.henrietta.com.pl/v1/view-cities').json()]
-    print("Miasta:",cities)
+    print("Miasta:", cities)
+    random_cites = random.sample(cities, 10)
+    return random_cites
+
+
+def check_what_cites_are_reachable(random_cites) -> tp.List[str]:
+    reachable_cites = []
+    for city in random_cites:
+        resp = requests.get(f'https://yandex.henrietta.com.pl/v1/view-businesses/{city}')
+        resp.raise_for_status()
+        j = resp.json()
+        print("RESP:", j)
+        reachable_cites.extend(j)
+
+    return reachable_cites
+
+
+if __name__ == '__main__':
 
     if len(sys.argv) < 3:
         print('''The correct way to load this script is to'
@@ -128,30 +158,16 @@ python -m conqueror <login to yandex> <password to yandex>
 ''')
         sys.exit(1)
 
-    chosen_cities = random.sample(cities, 10)
+    driver = setup_driver()
+    random_cites = chose_random_cites()
+    reachable_cites = check_what_cites_are_reachable(random_cites)
 
-    target_list = []
-
-    options = Options()
-    options = webdriver.ChromeOptions()
-    if '--headless' in sys.argv:
-        options.add_argument("--headless")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
-    for city in chosen_cities:
-        resp = requests.get(f'https://yandex.henrietta.com.pl/v1/view-businesses/{city}')
-        resp.raise_for_status()
-        j = resp.json()
-        print("RESP:", j)
-        target_list.extend(j)
-
-    login, haslo = sys.argv[1:3]
-    print('Login=', login, 'password=', haslo)
+    yandex_login, yandex_password = sys.argv[1:3]
+    print('Login=', yandex_login, 'password=', yandex_password)
     random.shuffle(target_list)
     print("Pomieszano cele")
 
     for i in target_list:
         print("Cel:", i)
-        spam(f'https://yandex.ru/maps/org/itle/{i}')
+        spam(f'https://yandex.ru/maps/org/itle/{i}', driver, yandex_login, yandex_password)
     driver.close()
-
