@@ -130,9 +130,6 @@ python -m conqueror <login to yandex> <password to yandex>
 
     target_list = []
 
-    chosen_cities = [["Kazan", 43]]
-    print('Loading the target list for ', chosen_cities)
-
     options = Options()
     options = webdriver.ChromeOptions()
     # options.add_argument("--headless")
