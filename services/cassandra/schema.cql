@@ -30,7 +30,7 @@ CREATE TABLE yandex.businesses (
 
 CREATE TABLE yandex.entries (
     apiKey  TEXT,
-    entries INT,
+    count INT,
     PRIMARY KEY (apiKey);
 );
 
