@@ -3,6 +3,8 @@ yandex-conqueror
 [![PyPI version](https://badge.fury.io/py/yandex-conqueror.svg)](https://badge.fury.io/py/yandex-conqueror)
 [![PyPI](https://img.shields.io/pypi/implementation/yandex-conqueror.svg)](https://pypi.python.org/pypi/yandex-conqueror)
 
+A tool to inform the general Russian population about what's going on in year 2022 on Ukraine via
+posting 5-star reviews to Yandex.
 
 List of [contributors](https://git.dms-serwis.com.pl/yandex-conqueror/conqueror/-/blob/main/CONTRIBUTORS.md) available in a separate file.
 
