@@ -17,9 +17,5 @@ pip install yandex-conqueror
 python -m conqueror <yandex email> <yandex password>
 ```
 
-If you wish for the interactive window not to appear, you can always substitute the second command
-with
-
-```bash
-python -m conqueror <yandex email> <yandex password> --headless
-```
+Note that the browser window has to open in order for this to work. Ie. this cannot and will not work
+headless.
