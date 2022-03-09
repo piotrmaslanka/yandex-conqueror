@@ -23,4 +23,4 @@ python -m conqueror <yandex email> <yandex password>
 ```
 
 Note that the browser window has to open in order for this to work. Ie. this cannot and will not work
-headless.
+headless. Ie. you can't run this on a server without X.
