@@ -31,4 +31,11 @@ FAQ
 Why Cassandra?
 --------------
 
-Because we had a spare instance, and it doesn't require auth password.
+Because we had a spare instance, and it doesn't require auth password (by default). Which is totally fine,
+as our Cassandra is not exposed externally.
+
+Aren't you afraid that your counter will get hacked?
+----------------------------------------------------
+
+If we do, we'll block the offending e-mail addresses. Or we'll just add a whitelist with a couple
+of supported ones. We'll see how the situation develops...
