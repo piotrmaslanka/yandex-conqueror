@@ -5,7 +5,7 @@ yandex-conqueror
 [![PyPI](https://img.shields.io/pypi/implementation/yandex-conqueror.svg)](https://pypi.python.org/pypi/yandex-conqueror)
 
 
-List of [contributors](CONTRIBUTORS.md) available in a separate file.
+List of [contributors](https://git.dms-serwis.com.pl/yandex-conqueror/conqueror/-/blob/main/CONTRIBUTORS.md) available in a separate file.
 
 How to use it?
 ==============
