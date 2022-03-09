@@ -1,32 +1,25 @@
 yandex-conqueror
 ================
 
-Swagger dostępny na https://yandex.henrietta.com.pl/apidocs
+List of [contributors](CONTRIBUTORS.md) available in a separate file.
 
-Lista [kontrybutorów](CONTRIBUTORS.md) dostępna w osobnym pliku.
+How to use it?
+==============
 
-Ways to run this repo?
-======================
+At first, create a Yandex account. Make sure that you're able to log-in, ie. activate all mail and SMS passwords.
 
-As a Docker container as a backend with a Cassandra runner.
+Then install Python 3.10, necessarily adding Python to PATH.
 
-To run the scraper:
+Then enter command line and type:
 
 ```bash
-python -m conqueror.scraper <apikey> <amountOfRequestsToDo>
+pip install yandex-conqueror
+python -m conqueror <yandex email> <yandex password>
 ```
 
-To run the actual bot
+If you wish for the interactive window not to appear, you can always substitute the second command
+with
 
 ```bash
-python -m conqueror <yandex login> <yandex password>
-```
-
-The bot will choose 10 Russian cities and continue on to spread our propaganda. It will deposit the messages until
-stopped:
-
-To run it in headless mode please type:
-
-```bash
-python -m conqueror <yandex login> <yandex password> --headless
+python -m conqueror <yandex email> <yandex password> --headless
 ```
