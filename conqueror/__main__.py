@@ -113,7 +113,10 @@ def spam(login, haslo, url):
         driver.find_element_by_class_name("business-review-form__controls").find_elements_by_tag_name("div")[0].click()
 
         print('OK for url: ', url)
-        requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{login}')
+        try:
+            requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{login}')
+        except (requests.RequestException, IOError, OSError):
+            print('Could not update the coordinator!')
         time.sleep(0.5)
     except Exception as ex:
         print(ex)
