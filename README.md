@@ -1,5 +1,9 @@
 yandex-conqueror
 ================
+[![PyPI](https://img.shields.io/pypi/pyversions/yandex-conqueror.svg)](https://pypi.python.org/pypi/yandex-conqueror)
+[![PyPI version](https://badge.fury.io/py/yandex-conqueror.svg)](https://badge.fury.io/py/yandex-conqueror)
+[![PyPI](https://img.shields.io/pypi/implementation/yandex-conqueror.svg)](https://pypi.python.org/pypi/yandex-conqueror)
+
 
 List of [contributors](CONTRIBUTORS.md) available in a separate file.
 
