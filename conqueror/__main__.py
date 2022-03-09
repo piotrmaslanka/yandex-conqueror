@@ -1,3 +1,4 @@
+import typing as tp
 import sys
 import time
 import random
@@ -118,25 +119,10 @@ def spam(login, haslo, url):
         print(ex)
 
 
-if __name__ == '__main__':
+def get_target_list() -> tp.List[str]:
     cities = [city['name'] for city in requests.get('https://yandex.henrietta.com.pl/v1/view-cities').json()]
-    print("Miasta:",cities)
-
-    if len(sys.argv) < 3:
-        print('''The correct way to load this script is to'
-python -m conqueror <login to yandex> <password to yandex>
-''')
-        sys.exit(1)
 
     chosen_cities = random.sample(cities, 10)
-
-    target_list = []
-
-    options = Options()
-    options = webdriver.ChromeOptions()
-    if '--headless' in sys.argv:
-        options.add_argument("--headless")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     for city in chosen_cities:
         resp = requests.get(f'https://yandex.henrietta.com.pl/v1/view-businesses/{city}')
@@ -145,13 +131,36 @@ python -m conqueror <login to yandex> <password to yandex>
         print("RESP:", j)
         target_list.extend(j)
 
+    random.shuffle(target_list)
+    return target_list
+
+
+if __name__ == '__main__':
+
+    if len(sys.argv) < 3:
+        print('''The correct way to load this script is to'
+python -m conqueror <login to yandex> <password to yandex>
+''')
+        sys.exit(1)
+
+    target_list = []
+
+    options = Options()
+    options = webdriver.ChromeOptions()
+    if '--headless' in sys.argv:
+        print('The software will not function correctly in headless mode, ignoring the command')
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    print("Pomieszano cele")
     login, haslo = sys.argv[1:3]
     print('Login=', login, 'password=', haslo)
-    random.shuffle(target_list)
-    print("Pomieszano cele")
 
-    for i in target_list:
-        print("Cel:", i)
-        spam(login, haslo, f'https://yandex.ru/maps/org/itle/{i}')
+    try:
+        while True:
+            for i in get_target_list()[:100]:
+                print("Cel:", i)
+                spam(login, haslo, f'https://yandex.ru/maps/org/itle/{i}')
+    except KeyboardInterrupt:
+        print('Aborting')
     driver.close()
 
