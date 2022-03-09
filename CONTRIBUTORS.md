@@ -1,5 +1,5 @@
 1. Piotr Maślanka - director
-2. Patryk Świętoń - Python developer
+2. Patryk Świętoń - data analyst
 3. Kacper Stysło - Python developer
 4. Marcin Zdunek - Python developer
 5. Martyna Wyrzykowska - deputy director
