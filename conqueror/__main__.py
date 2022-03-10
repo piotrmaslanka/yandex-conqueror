@@ -115,7 +115,7 @@ def spam(login, haslo, url):
 
         print('OK for url: ', url)
         try:
-            login_encoded = urllib.quote_plus(login)
+            login_encoded = urllib.parse.quote_plus(login)
             requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{login_encoded}')
         except (requests.RequestException, IOError, OSError):
             print('Could not update the coordinator!')
