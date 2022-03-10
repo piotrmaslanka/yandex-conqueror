@@ -21,7 +21,8 @@ def list_messages():
                             properties:
                                 type:
                                     type: string
-                                    description: 1-A
+                                    description: Message type
+                                    example: "1-A"
                                 content:
                                     type: string
                                     example: "[Russians|People of the Russia] wake up plax!"
