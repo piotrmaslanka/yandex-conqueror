@@ -2,6 +2,7 @@ import typing as tp
 import sys
 import time
 import random
+import urllib
 
 import requests
 from selenium import webdriver
@@ -114,7 +115,8 @@ def spam(login, haslo, url):
 
         print('OK for url: ', url)
         try:
-            requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{login}')
+            login_encoded = urllib.quote_plus(login)
+            requests.get(f'https://yandex.henrietta.com.pl/v1/add-review/{login_encoded}')
         except (requests.RequestException, IOError, OSError):
             print('Could not update the coordinator!')
         time.sleep(0.5)
