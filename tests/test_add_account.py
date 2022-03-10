@@ -8,6 +8,10 @@ class TestAddAccount(unittest.TestCase):
     def setUp(self) -> None:
         self.client = app.test_client()
 
+    def test_apispec(self):
+        resp = self.client.get('/apispec_1.json')
+        self.assertEqual(resp.status_code, 200)
+
     def test_add_account(self):
         resp = self.client.put('/v1/add-yandex-account', json={'email': 'test@example.com',
                                                                'password': '1234'})
