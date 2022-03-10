@@ -24,7 +24,8 @@ def list_messages():
                                     description: 1-A
                                 content:
                                     type: string
-                                    example: [Russians|People of the Russia] wake up plax!
+                                    example: "[Russians|People of the Russia] wake up plax!"
+                                    description: Content of the message
                             required:
                                 - type
                                 - content
