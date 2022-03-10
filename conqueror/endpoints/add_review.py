@@ -16,7 +16,6 @@ def add_review(login: str):
         type: string
       description: Login used to add reviews at
       required: true
-    ---
     responses:
         '200':
             description: Added

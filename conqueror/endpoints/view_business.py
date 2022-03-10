@@ -16,7 +16,6 @@ def get_businesses(sector: str):
         type: string
       description: Name of Russian city in Latin alphabet
       required: true
-    ---
     responses:
         '200':
             description: OK
