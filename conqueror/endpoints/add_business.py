@@ -26,10 +26,10 @@ def add_business():
                                 type: string
                                 description: Business' sector
                             lat:
-                                type: float
+                                type: number
                                 description: Geographical latitude in degrees. + is North
                             lon:
-                                type: float
+                                type: number
                                 description: Geographical longitude in degrees. + is East
                             name:
                                 type: string

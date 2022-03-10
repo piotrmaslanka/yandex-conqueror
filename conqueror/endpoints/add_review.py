@@ -3,7 +3,7 @@ from conqueror.cassandra import session
 from conqueror.utils import as_json
 
 
-@app.route('/v1/add-review/<string:login>')
+@app.route('/v1/add-review/<string:login>', methods=['GET', 'POST'])
 @as_json
 def add_review(login: str):
     """
